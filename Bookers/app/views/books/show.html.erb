@@ -1,0 +1,47 @@
+
+<div class="container">
+
+	 <div class="center-block">
+      <%= render 'layouts/flash' %>
+    </div>
+    
+	<div class="row">
+
+		<%= render 'books/form', user: @user, book:@book %>
+
+		<div class="col-xs-9">
+		<h2>Book detail</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>
+						<%= link_to user_path(@user.id) do %>
+							<span><%= attachment_image_tag @book.user, :profile_image, :fill, 100,100, class: "img pull-left profile-thumb", fallback: "no_image.jpg"%></span><br><br><br><br><br>
+						<% end %>
+						<%= link_to @book.user.name , user_path(@user.id) , class: "pull-left" %>
+					</td>
+					
+					<td><%= link_to @book.title , book_path(@book) %></td>
+					<td><%= @book.body %></td>
+					<% if @user == current_user %>
+						<td>
+							<button class="btn btn-success">
+								<%= link_to 'Edit' , edit_book_path(@book) ,class: "text-muted" %>
+							</button>
+						</td>
+						<td>
+							<button class="btn btn-danger">
+								<%= link_to 'Destroy' , book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" ,class: "text-muted" %>
+							</button>
+						</td>
+					<% end %>
+
+				</tr>
+				
+			</tbody>
+		</table>
+
+		</div>
+
+	</div>
+</div>

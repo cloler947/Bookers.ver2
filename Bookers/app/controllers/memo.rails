@@ -1,0 +1,17 @@
+<div class="col-xs-3">
+	<h2>User info</h2>
+<table class="table">
+	<tbody>
+		<tr>
+			<th><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg"%></th>
+			<th>name</th>
+			<th><%= @user.name %></th>
+			<th>introduction</th>
+			<th><%= @user.introduction %></th>
+			<% if @user.id == current_user.id %>
+				<p><%= link_to "profile-edit", edit_user_path(@user), class: "pull-right" %></p>
+			<% end %>
+		</tr>
+	</tbody>
+</table>
+</div>
